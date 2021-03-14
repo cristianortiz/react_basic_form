@@ -5,7 +5,7 @@ function App() {
   return (
     <Fragment>
       <h1>Pets Doctor Appointment</h1>
-      <div className="cointaner">
+      <div className="container">
         <div className="row">
           <div className="one-half column">
             <Form />
