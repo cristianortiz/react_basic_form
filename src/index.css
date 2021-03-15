@@ -19,21 +19,21 @@ h1, h2  {
   font-family: 'Staatliches', cursive;
   letter-spacing: 1px;
 }
-.lista-citas .media {
+.lista-appos .media {
   border-bottom: 1px solid #e1e1e1;
   padding-bottom: 3rem;
 }
 
-.lista-citas .media:last-of-type{
+.lista-appos .media:last-of-type{
   border-bottom: 0;
 }
-.lista-citas .media-body p {
+.lista-appos .media-body p {
   margin:0;
 }
-.lista-citas .media-body button {
+.lista-appos .media-body button {
   margin-top: 1rem!important;
 }
-.lista-citas .media-body span {
+.lista-appos .media-body span {
   font-weight: bold;
 }
 
@@ -52,26 +52,26 @@ input[type="time"] {
     box-sizing: border-box;
 }
 
-.cita {
+.appo {
   padding: 2rem;
   background: white;
   border-bottom: 1px solid #e1e1e1;
   color: black;
 }
 
-.cita p {
+.appo p {
   font-weight: bold;
   margin-bottom: .8rem;
 }
-.cita p span {
+.appo p span {
   font-weight: normal;
 
 }
-.cita:first-of-type {
+.appo:first-of-type {
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
 }
-.cita:last-of-type {
+.appo:last-of-type {
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }

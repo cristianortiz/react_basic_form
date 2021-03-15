@@ -44,13 +44,10 @@ const Form = ({ createAppo }) => {
 
     //asigng and ID
     appo.id = uuid();
-    console.log(appo);
-
     //make the appo using the prop createAppo sent from App.js
     createAppo(appo);
-
     //rest the form
-    updateError({
+    updateAppo({
       pet: "",
       owner: "",
       date: "",
