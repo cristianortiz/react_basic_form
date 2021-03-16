@@ -1,10 +1,28 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Form from "./component/Form";
 import Appo from "./component/Appo";
 
 function App() {
-  //list of all appointemts akka allAppos using a hook
-  const [allAppos, saveAppos] = useState([]);
+  //appointments aka appos in local storage
+  let initialAppos = JSON.parse(localStorage.getItem("allAppos"));
+  if (!initialAppos) {
+    initialAppos = [];
+  }
+
+  //list of all appointemts akka allAppos, initialAppos in LS is the initial state values of useState and for useEffect hooks
+  const [allAppos, saveAppos] = useState([initialAppos]);
+
+  //useEffect hook alwys listen when state changes, and is used to make some ops, use empty [] to executes one time only
+  useEffect(() => {
+    let initialAppos = JSON.parse(localStorage.getItem("allAppos"));
+
+    if (initialAppos) {
+      //if there is any appos in LS this appos will be the list of all appos
+      localStorage.setItem("allAppos", JSON.stringify(allAppos));
+    } else {
+      localStorage.setItem("allAppos", JSON.stringify([])); //if there is not appos in LS then the list of appos will be an empty array []
+    }
+  }, [allAppos]); //alppos is the dependency param where the changes in the state reflects
 
   //function to take the actual list of appos and add a new one from form component in the Appo State
   const createAppo = (appo) => {
@@ -15,9 +33,12 @@ function App() {
   //function to delete an appointment by id
   const deleteAppo = (id) => {
     //from appos list in "your appointments" (allAppos State) copy all in a new array, less the one whit the id equals to the appo for delete
-    const newAppos = allAppos.filter((appo) => appo.id != id);
-    saveAppos(newAppos);
+    const newAppos = allAppos.filter((appo) => appo.id !== id);
+    saveAppos(newAppos); //save th new list of appos in the State
   };
+
+  //conditional msg
+  const title = allAppos.length === 0 ? "No Appointments" : "Your Appointments";
 
   return (
     <Fragment>
@@ -28,7 +49,7 @@ function App() {
             <Form createAppo={createAppo} />
           </div>
           <div className="one-half column">
-            <h1>Your Appointments</h1>
+            <h2>{title}</h2>
             {allAppos.map((appo) => (
               <Appo key={appo.id} appo={appo} deleteAppo={deleteAppo} />
             ))}

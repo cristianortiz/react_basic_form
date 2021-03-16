@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import uuid from "uuid/dist/v4"; //for generate uniques ID
+import PropTypes from "prop-types";
 
 //destructuring on props object to extract createAppo
 const Form = ({ createAppo }) => {
@@ -120,6 +121,11 @@ const Form = ({ createAppo }) => {
       </form>
     </Fragment>
   );
+};
+
+//using propTypes for documenting components
+Form.propTypes = {
+  createAppo: PropTypes.func.isRequired,
 };
 
 export default Form;

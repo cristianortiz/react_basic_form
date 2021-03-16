@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Appo = ({ appo, deleteAppo }) => (
   <div className="appo">
@@ -26,5 +27,10 @@ const Appo = ({ appo, deleteAppo }) => (
     </button>
   </div>
 );
+//documenting and type checking whit proptypes
+Appo.propTypes = {
+  appo: PropTypes.object.isRequired,
+  deleteAppo: PropTypes.func.isRequired,
+};
 
 export default Appo;
