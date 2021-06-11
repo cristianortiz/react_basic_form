@@ -27,6 +27,7 @@ const Form = ({ createAppo }) => {
   //user click the submit form button
   const submitAppo = (e) => {
     e.preventDefault();
+    //to testing
 
     //form validations
     if (
@@ -45,6 +46,7 @@ const Form = ({ createAppo }) => {
 
     //asigng and ID
     appo.id = uuid();
+    console.log(appo);
     //make the appo using the prop createAppo sent from App.js
     createAppo(appo);
     //rest the form
@@ -62,12 +64,17 @@ const Form = ({ createAppo }) => {
 
   return (
     <Fragment>
-      <h2>Make an Appointment</h2>
+      <h2 data-testid="title">Make an Appointment</h2>
 
-      {error ? <p className="alerta-error">All fields are mandatory</p> : null}
+      {error ? (
+        <p data-testid="alert" className="alerta-error">
+          All fields are mandatory
+        </p>
+      ) : null}
       <form onSubmit={submitAppo}>
         <label>Pet's Name</label>
         <input
+          data-testid="pet"
           type="text"
           name="pet"
           className="u-full-width" //input toma todo el espacio disponible
@@ -78,6 +85,7 @@ const Form = ({ createAppo }) => {
 
         <label>Owner's Name</label>
         <input
+          data-testid="owner"
           type="text"
           name="owner"
           className="u-full-width" //input toma todo el espacio disponible
@@ -88,6 +96,7 @@ const Form = ({ createAppo }) => {
 
         <label>Date</label>
         <input
+          data-testid="date"
           type="date"
           name="date"
           className="u-full-width"
@@ -97,6 +106,7 @@ const Form = ({ createAppo }) => {
 
         <label>Time</label>
         <input
+          data-testid="time"
           type="time"
           name="time"
           className="u-full-width"
@@ -105,6 +115,7 @@ const Form = ({ createAppo }) => {
         />
         <label>Symptoms</label>
         <textarea
+          data-testid="symptoms"
           className="u-full-width"
           name="symptoms"
           onChange={updateState}
@@ -112,11 +123,12 @@ const Form = ({ createAppo }) => {
         ></textarea>
 
         <button
+          data-testid="btn-submit"
           type="submit"
           className="u-full-width button-primary"
           onChange={updateState}
         >
-          Make an Appointment
+          Send
         </button>
       </form>
     </Fragment>
