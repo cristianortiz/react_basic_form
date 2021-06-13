@@ -67,4 +67,8 @@ test("should test the user inputs in the form ", () => {
   //test for do not show the alert when the user submit the form with corrects inputs values
   const alert = screen.queryByTestId("alert"); //query for a conditional element, maybe it does not exists
   expect(alert).not.toBeInTheDocument();
+
+  //test the createAppo function have been colled after the submit event with validated inputs
+  expect(createAppo).toHaveBeenCalled();
+  expect(createAppo).toHaveBeenCalledTimes(1);
 });

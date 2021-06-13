@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Appo = ({ appo, deleteAppo }) => (
-  <div className="appo">
+  <div data-testid="appointment" className="appo">
     <p>
       Pet: <span>{appo.pet}</span>
     </p>
@@ -20,6 +20,7 @@ const Appo = ({ appo, deleteAppo }) => (
     </p>
 
     <button
+      data-testid="btn-delete"
       className="button eliminar u-full-width"
       onClick={() => deleteAppo(appo.id)}
     >

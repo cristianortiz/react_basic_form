@@ -8,9 +8,9 @@ function App() {
   if (!initialAppos) {
     initialAppos = [];
   }
-
+  console.log(initialAppos);
   //list of all appointemts akka allAppos, initialAppos in LS is the initial state values of useState and for useEffect hooks
-  const [allAppos, saveAppos] = useState([initialAppos]);
+  const [allAppos, saveAppos] = useState(initialAppos);
 
   //useEffect hook alwys listen when state changes, and is used to make some ops, use empty [] to executes one time only
   useEffect(() => {
@@ -39,17 +39,18 @@ function App() {
 
   //conditional msg
   const title = allAppos.length === 0 ? "No Appointments" : "Your Appointments";
+  console.log(allAppos.length);
 
   return (
     <Fragment>
-      <h1>Pets Doctor Appointment</h1>
+      <h1 data-testid="title-app">Pets Doctor Appointment</h1>
       <div className="container">
         <div className="row">
           <div className="one-half column">
             <Form createAppo={createAppo} />
           </div>
           <div className="one-half column">
-            <h2>{title}</h2>
+            <h2 data-testid="conditional-title">{title}</h2>
             {allAppos.map((appo) => (
               <Appo key={appo.id} appo={appo} deleteAppo={deleteAppo} />
             ))}
